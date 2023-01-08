@@ -1,0 +1,4 @@
+venv/
+build/
+dist/
+__pycache__/main_macropad.cpython-310.pyc
