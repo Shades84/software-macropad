@@ -18,6 +18,15 @@ from subprocess import call
 config_object = ConfigParser()
 config_object.read("config.ini")
 
+def run_button(button_name):
+    try:
+        subprocess.run(button_name)
+    except:
+        msg = QMessageBox()
+        msg.setWindowTitle("Error")
+        msg.setText("Couldn't execute requested command. Please revise chosen action's code.")
+        msg.exec_()
+
 class Window(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -67,47 +76,51 @@ class Window(QMainWindow, Ui_MainWindow):
     def onButton00Clicked(self):
         button00config = config_object["button00"]
         button00CMD = button00config["cmd"].split(",")
-        subprocess.run(button00CMD)
+        run_button(button00CMD)
+
 
     def onButton01Clicked(self):
         button01config = config_object["button01"]
         button01CMD = button01config["cmd"].split(",")
-        subprocess.run(button01CMD)
+        run_button(button01CMD)
 
     def onButton02Clicked(self):
         button02config = config_object["button02"]
         button02CMD = button02config["cmd"].split(",")
-        subprocess.run(button02CMD)
+        run_button(button02CMD)
 
     def onButton10Clicked(self):
         button10config = config_object["button10"]
         button10CMD = button10config["cmd"].split(",")
-        print(button10CMD)
-        subprocess.run(button10CMD)
+        run_button(button10CMD)
 
     def onButton11Clicked(self):
         button11config = config_object["button11"]
         button11CMD = button11config["cmd"].split(",")
-        subprocess.run(button11CMD)
+        run_button(button11CMD)
 
     def onButton12Clicked(self):
         button12config = config_object["button12"]
         button12CMD = button12config["cmd"].split(",")
-        subprocess.run(button12CMD)
+        run_button(button12CMD)
     
     def onButton20Clicked(self):
         button20config = config_object["button20"]
         button20CMD = button20config["cmd"].split(",")
-        subprocess.run(button20CMD)
+        run_button(button20CMD)
     
     def onButton212Clicked(self):
         button212config = config_object["button212"]
         button212CMD = button212config["cmd"].split(",")
-        subprocess.run(button212CMD)
-        
-if __name__ == "__main__":
+        run_button(button212CMD)
+
+
+def main():
     app = QApplication(sys.argv)
     apply_stylesheet(app, theme='dark_teal.xml')
     win = Window()
     win.show()
     sys.exit(app.exec())
+
+if __name__ == "__main__":
+    main()
