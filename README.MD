@@ -4,7 +4,7 @@ this is a 'macropad' i made to use with the steam deck, but it can be used for a
 I used the stylesheets from UN-GCPDS/qt-material found [here](https://github.com/UN-GCPDS/qt-material) so it actually looks nice
 
 
-**CURRENTLY NEED HELP WITH SENDING KEYBOARD PRESSES TO SPECIFIC WINDOWS ON LINUX, ANY INPUT IS APPERCIATED**
+**CURRENTLY NEED HELP WITH SENDING KEYBOARD PRESSES TO SPECIFIC WINDOWS ON LINUX, ANY INPUT IS APPERCIATED** 
 # how to run
 ## create virtual environment
 first run\
@@ -44,8 +44,8 @@ changes to buttons can be made in the config.ini file. Commands are somewhat fus
 
 # to do
 - more descriptive names for files/refactoring code
-- add functionality to sliders and dials
-- add themes selection to config file
+- add functionality to sliders and dials (any suggestions?)
+- add themes selection to config file 
 - try to implement sending keystrokes to games (maybe its an issue because it pulls focus from the game, unsure)
 - swappable profiles
 - server/client setup for multiple computers?
