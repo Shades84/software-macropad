@@ -1,8 +1,10 @@
 # about
-this is a 'macropad' i made to use with the steam deck, but it can be used for anything. Not tested, but i imagine it will work with any sort of touch screen connected to your computer
+this is a 'macropad' i made to use with the steam deck, but it can be used for anything. Not tested, but i imagine it will work with any sort of touch screen connected to your computer.
 
 I used the stylesheets from UN-GCPDS/qt-material found [here](https://github.com/UN-GCPDS/qt-material) so it actually looks nice
 
+
+**CURRENTLY NEED HELP WITH SENDING KEYBOARD PRESSES TO SPECIFIC WINDOWS ON LINUX, ANY INPUT IS APPERCIATED**
 # how to run
 ## create virtual environment
 first run\
@@ -13,7 +15,7 @@ first run\
 ```venv/Scripts/Activate.ps1``` for powershell
 
 *Linux*\
-```venv/bin/activate```
+```source venv/bin/activate```
 
 ## install requirements
 ```pip install -r requirements.txt```
@@ -41,14 +43,18 @@ to convert changes to python code
 changes to buttons can be made in the config.ini file. Commands are somewhat fussy about how they need to be formated
 
 # to do
-- more descriptive names for files
+- more descriptive names for files/refactoring code
 - add functionality to sliders and dials
 - add themes selection to config file
-- fixing the issues in the documentation that will no doubt arise
+- try to implement sending keystrokes to games (maybe its an issue because it pulls focus from the game, unsure)
+- swappable profiles
+- server/client setup for multiple computers?
 
-# helpful links
-https://www.youtube.com/watch?v=li7esLMuFhE
-https://www.pythonguis.com/pyqt5/
-https://build-system.fman.io/pyqt5-tutorial
-https://github.com/altendky/pyqt-tools/issues/98#issuecomment-968296553
-https://realpython.com/qt-designer-python/
+# helpful links and other projects
+https://www.youtube.com/watch?v=li7esLMuFhE \
+https://www.pythonguis.com/pyqt5/ \
+https://build-system.fman.io/pyqt5-tutorial \
+https://github.com/altendky/pyqt-tools/issues/98#issuecomment-968296553 \
+https://realpython.com/qt-designer-python/ 
+https://github.com/timothycrosley/streamdeck-ui
+https://rodriguezanton.com/remote-sound-board-using-fastapi-vue-and/
