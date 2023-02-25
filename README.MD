@@ -35,14 +35,14 @@ first run\
 
 # how to build for distribution
 from the root of the project dir, run:\
-```pyinstaller software-macropad.spec``` or ```pyinstaller -w -n software-macropad --add-data 'config.ini;.' .\app.py```\
-```pyinstaller software-macropad_client.spec``` or ```pyinstaller -w --add-data 'client_config.ini;.' .\app_client.py```\
-```pyinstaller software-macropad_server.spec``` or ```pyinstaller -w --add-data 'server_config.ini;.' .\app_server.py```\
+```pyinstaller -w -n software-macropad --add-data 'config.ini;.' .\app.py```\
+```pyinstaller -w -n software-macropad_client --add-data 'client_config.ini;.' .\app_client.py```\
+```pyinstaller -n software-macropad_server --add-data 'server_config.ini;.' .\app_server.py```
 
--w creates a windowed application (so it doesnt show the terminal)\
+-w creates a windowed application (so it doesnt show the terminal) (remove this for linux)\
 -n name to assign to bundled app\
---add-data tells the program to copy the config.ini file to the end result folder\
-.\app.py is the main app \
+--add-data tells the program to copy the config.ini file to the end result folder (change ; to : for linux)\
+.\app.py is the main app (remove .\ part for linux)
 
 # customizing the app
 ## GUI layout
@@ -71,12 +71,13 @@ this will vary from browser to browser but this is how it is for chrome\
 
 # to do
 - add functionality to sliders and dials (any suggestions?)
-- try to implement sending keystrokes to games (maybe its an issue because it pulls focus from the game, unsure)
+- implement sending keystrokes to games (maybe its an issue because it pulls focus from the game, unsure)
 - swappable profiles
-- server/client setup for multiple computers?
+- build script
 - add logging
 - icons on buttons?
 - icon for app and title bar
+- figure out how to kill server on linux (woops, didnt think of that)
 
 # helpful links and other projects
 https://www.youtube.com/watch?v=li7esLMuFhE \

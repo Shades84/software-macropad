@@ -7,7 +7,6 @@ PyGetWindow==0.0.9
 pyinstaller==5.8.0
 pyinstaller-hooks-contrib==2023.0
 PyMsgBox==1.0.9
-pynput==1.7.6
 pyperclip==1.8.2
 PyQt5==5.15.7
 PyQt5-Qt5==5.15.2
@@ -16,8 +15,6 @@ PyRect==0.2.0
 PyScreeze==0.1.28
 pytweening==1.0.4
 pywin32==305
-pywin32-ctypes==0.2.0
-PyWinCtl==0.0.42
 qt-material==2.12
 six==1.16.0
 websockets==10.4
