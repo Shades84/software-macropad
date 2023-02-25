@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['app.py'],
+    ['app_client.py'],
     pathex=[],
     binaries=[],
-    datas=[('config.ini', '.')],
+    datas=[('client_config.ini', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -26,7 +26,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='app',
+    name='software-macropad_client',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -46,5 +46,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='app',
+    name='software-macropad_client',
 )

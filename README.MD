@@ -6,6 +6,16 @@ I used the stylesheets from UN-GCPDS/qt-material found [here](https://github.com
 
 **CURRENTLY NEED HELP WITH SENDING KEYBOARD PRESSES TO SPECIFIC WINDOWS ON LINUX, ANY INPUT IS APPERCIATED** 
 # how to run
+- grab the latest from the release page use ```software-macropad``` to run the macropad on the same device you want to control. Use the ```server``` and ```client``` to control one device from another on the same network
+- edit the ```config.ini``` file to your prefference. See 
+- run the executable
+
+# \*new!* server/client
+- configure the IP and port in ```server_config.ini``` and ```client_config.ini```. This will be the IP of the device you want to control. As for port, ive been using ```8765```
+- run the server on the device you want to control
+- run the client on the thing you want to be a macropad (such as steamdeck or touchscreen windows device)
+
+# development
 ## create virtual environment
 first run\
 ```python -m venv venv ```
@@ -23,14 +33,14 @@ first run\
 ## run app
 ```python app.py```
 
-
 # how to build for distribution
 from the root of the project dir, run:\
-```pyinstaller -w --add-data 'config.ini;.' .\app.py```\
-```pyinstaller -w --add-data 'client_config.ini;.' .\app_client.py```
-```pyinstaller -w --add-data 'server_config.ini;.' .\app_server.py```
+```pyinstaller software-macropad.spec``` or ```pyinstaller -w -n software-macropad --add-data 'config.ini;.' .\app.py```\
+```pyinstaller software-macropad_client.spec``` or ```pyinstaller -w --add-data 'client_config.ini;.' .\app_client.py```\
+```pyinstaller software-macropad_server.spec``` or ```pyinstaller -w --add-data 'server_config.ini;.' .\app_server.py```\
 
 -w creates a windowed application (so it doesnt show the terminal)\
+-n name to assign to bundled app\
 --add-data tells the program to copy the config.ini file to the end result folder\
 .\app.py is the main app \
 
@@ -40,17 +50,33 @@ modify the .ui file in qt designer (or by hand if you're brave) \
 run the command:\
 ```pyuic5 -o main_mainmacropad.py macropad_v0.1.ui```\
 to convert changes to python code
-
+## GUI theme
+change the ```theme``` in the ```appConfig``` section of ```config.ini```. Possible options are presented at the top of the file.
 ## button labels and functions
-changes to buttons can be made in the config.ini file. Commands are somewhat fussy about how they need to be formated
+changes to buttons can be made in the config.ini file. Commands are somewhat fussy about how they need to be formated. Program is using the python ```subprocess.run()``` method. Write your commands to have the program you want to launch as the first item and any parameters after, seperated by commas. 
+### example: steam games
+```steam,steam://rungameid/APPID```\
+where APPID is the app ID of the game or program. You can find your game's ID on https://steamdb.info/. Also works for non-steam shortcuts, but that is a little more complicated for finding the app ID. 
+
+### example: launch website
+this will vary from browser to browser but this is how it is for chrome\
+```PATH/TO/WEBBROWSER.exe, -PARAM1, -PARAM2```
+
+# troubleshooting
+## button not working
+- check that config.ini is setup correctly. Comma seperated launch options, be mindful with quotations
+- **windows:** is your program in your PATH environment variable?
+## can't connect between server and client
+- work in progress
 
 # to do
-- more descriptive names for files/refactoring code
 - add functionality to sliders and dials (any suggestions?)
-- add themes selection to config file 
 - try to implement sending keystrokes to games (maybe its an issue because it pulls focus from the game, unsure)
 - swappable profiles
 - server/client setup for multiple computers?
+- add logging
+- icons on buttons?
+- icon for app and title bar
 
 # helpful links and other projects
 https://www.youtube.com/watch?v=li7esLMuFhE \

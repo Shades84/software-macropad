@@ -13,9 +13,8 @@ from main_macropad import Ui_MainWindow
 from configparser import ConfigParser
 import asyncio
 from websockets import connect
-
 from qt_material import apply_stylesheet
-from subprocess import call
+
 config_object = ConfigParser()
 config_object.read("client_config.ini")
 appConfig = config_object["appConfig"]
@@ -31,7 +30,6 @@ class Window(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         
         # window stuff
-        # self.setWindowFlag(Qt.FramelessWindowHint)
         self.setWindowTitle('alpha-0.0.2')
         
         # setup buttons
@@ -42,10 +40,6 @@ class Window(QMainWindow, Ui_MainWindow):
         timer.timeout.connect(self.showTime)
         timer.start(1000)
         
-        msg = QMessageBox()
-        msg.setWindowTitle("Error")
-        msg.setText("Server uri set as " + SERVERURL)
-        msg.exec_()
     def showTime(self):   
         current_time = QTime.currentTime()
         label_time = current_time.toString('hh:mm')
@@ -124,8 +118,7 @@ class Window(QMainWindow, Ui_MainWindow):
 def main():
     app = QApplication(sys.argv)
     apply_stylesheet(app, theme=appConfig["theme"])
-    print("Server uri set as " + SERVERURL)
-
+    
     win = Window()
     win.show()
     sys.exit(app.exec())

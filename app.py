@@ -13,10 +13,15 @@ from PyQt5.uic import loadUi
 from main_macropad import Ui_MainWindow
 from configparser import ConfigParser
 
+from pynput.keyboard import Key, Controller
+import pywinctl as pwc
+
 from qt_material import apply_stylesheet
-from subprocess import call
+
 config_object = ConfigParser()
 config_object.read("config.ini")
+#windowTitles = pwc.getWindowsWithTitle('0 A.D.')
+#appWindow = windowTitles[0]
 
 def run_button(button_name):
     try:
@@ -31,13 +36,27 @@ class Window(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+        
+        # window stuff
+        # self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setWindowTitle('alpha-0.0.2')
+        # self.keyboard = Controller()
+        
+        
+        # setup buttons
         self.buttonGridSetup()
+        # self.verticalSlider_4.valueChanged.connect(self.onSliderChanged)
+        
+        # clock timer
         timer = QTimer(self)
         timer.timeout.connect(self.showTime)
         timer.start(1000)
-        # self.setWindowFlag(Qt.FramelessWindowHint)
-        self.setWindowTitle('alpha-0.0.0')
+
     
+    # def onSliderChanged(self, value):
+        # param = 'https://www.google.com/search?q=' + str(value)
+        # subprocess.run(['C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',param])
+        
     def showTime(self):   
         current_time = QTime.currentTime()
         label_time = current_time.toString('hh:mm')
@@ -86,8 +105,24 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def onButton02Clicked(self):
         button02config = config_object["button02"]
+
         button02CMD = button02config["cmd"].split(",")
         run_button(button02CMD)
+        
+        # testing some pynput stuff here. Nothing to see.
+
+        # button02Key = button02config["key"]
+        # kc=keyboard.KeyCode.from_char('cmd')
+        # print(kc)
+        # print(type(kc))
+        # print(kc.char)
+        # print(type(Key.cmd))
+        # print(button02Key)
+        # self.keyboard.press(Key.cmd)
+        # self.keyboard.press('1')
+        # self.keyboard.release('1') 
+        # self.keyboard.release(Key.cmd)
+
 
     def onButton10Clicked(self):
         button10config = config_object["button10"]
@@ -117,7 +152,9 @@ class Window(QMainWindow, Ui_MainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    apply_stylesheet(app, theme='dark_teal.xml')
+    appConfig = config_object["appConfig"]
+    apply_stylesheet(app, theme=appConfig["theme"])
+
     win = Window()
     win.show()
     sys.exit(app.exec())
