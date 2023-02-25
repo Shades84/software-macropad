@@ -27,6 +27,8 @@ first run\
 # how to build for distribution
 from the root of the project dir, run:\
 ```pyinstaller -w --add-data 'config.ini;.' .\app.py```\
+```pyinstaller -w --add-data 'client_config.ini;.' .\app_client.py```
+```pyinstaller -w --add-data 'server_config.ini;.' .\app_server.py```
 
 -w creates a windowed application (so it doesnt show the terminal)\
 --add-data tells the program to copy the config.ini file to the end result folder\
