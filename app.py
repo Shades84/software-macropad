@@ -10,6 +10,7 @@ import subprocess
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.uic import loadUi
+from PyQt5 import QtGui
 from main_macropad import Ui_MainWindow
 from configparser import ConfigParser
 
@@ -40,6 +41,7 @@ class Window(QMainWindow, Ui_MainWindow):
         # window stuff
         # self.setWindowFlag(Qt.FramelessWindowHint)
         self.setWindowTitle('alpha-0.0.2')
+        self.setWindowIcon(QtGui.QIcon('assets/swmp.ico'))
         # self.keyboard = Controller()
         
         

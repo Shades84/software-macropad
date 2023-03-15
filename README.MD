@@ -34,7 +34,10 @@ first run\
 ```python app.py```
 
 # how to build for distribution
-from the root of the project dir, run:\
+First, ensure your virtual environment is active.\
+If you're on windows, you can run the corresponding ```win_buildXXX.cmd``` script. This handles all the command line things. Linux scripts comming soon.
+
+If oyu want to run the build command yourself, from the root of the project dir, run:\
 ```pyinstaller -w -n software-macropad --add-data 'config.ini;.' .\app.py```\
 ```pyinstaller -w -n software-macropad_client --add-data 'client_config.ini;.' .\app_client.py```\
 ```pyinstaller -n software-macropad_server --add-data 'server_config.ini;.' .\app_server.py```
@@ -70,14 +73,13 @@ this will vary from browser to browser but this is how it is for chrome\
 - work in progress
 
 # to do
+- build scripts for linux
+- figure out how to kill server on linux (woops, didnt think of that)
+- implement sending keystrokes to games (currently looking at pynput)
 - add functionality to sliders and dials (any suggestions?)
-- implement sending keystrokes to games (maybe its an issue because it pulls focus from the game, unsure)
 - swappable profiles
-- build script
 - add logging
 - icons on buttons?
-- icon for app and title bar
-- figure out how to kill server on linux (woops, didnt think of that)
 
 # helpful links and other projects
 https://www.youtube.com/watch?v=li7esLMuFhE \
